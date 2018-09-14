@@ -13,8 +13,10 @@ by Christopher Ruckes, 2018
 
 const TileMap = function(images, tileSize, array2D, pos) {
 
-  this.images = images;
+  this.images = images || [];
   this.tileSize = tileSize || 32;
+  if (!Array.isArray(this.images) && this.images.canvas)
+    this.images = sheetToArray(this.images);
   this.array2D = array2D || new Array2D(3,3,(x,y)=> -1);
   this.pos = pos || {x:0,y:0};
 
@@ -25,6 +27,7 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
   this.draw = function() {
 
+    push();
     translate(this.pos.x,this.pos.y);
 
     this.array2D.loop( (index,x,y)=> {
@@ -41,6 +44,7 @@ const TileMap = function(images, tileSize, array2D, pos) {
           this.images[index].draw(x, y, tileSize);
       }
     });
+    pop();
 
   }
 
@@ -71,4 +75,28 @@ const TileMap = function(images, tileSize, array2D, pos) {
 }
 
 
+function sheetToArray(sheet, imgSize) {
 
+  if (!sheet.canvas) {
+
+    throw TypeError('invalid arguments: First argument has to be an image.');
+
+  } else {
+
+    sheet.loadPixels();
+    let size = imgSize || 32; 
+    let width = sheet.width / size;
+    let height = sheet.height / size;
+    let imgArray = [];
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        
+        imgArray.push( sheet.get(x*size, y*size, size, size) );
+      }
+    }
+    return imgArray;
+
+  }
+
+}
