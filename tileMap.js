@@ -18,6 +18,10 @@ const TileMap = function(images, tileSize, array2D, pos) {
   this.array2D = array2D || new Array2D(3,3,(x,y)=> -1);
   this.pos = pos || {x:0,y:0};
 
+  /**
+  * Draw all tiles.
+  * @method draw
+  **/
 
   this.draw = function() {
 
@@ -29,19 +33,13 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
       if (typeof index === 'number' && index >= 0 && index < this.images.length) {
 
-        if (this.images[index].canvas) { // image
+        if (this.images[index].canvas) // image
 
           image(this.images[index], x *tileSize, y *tileSize, tileSize, tileSize);
-         
-        } else { // sprite
-
+ 
+        else // sprite
           this.images[index].draw(x, y, tileSize);
-
-        }
-
       }
-        
-
     });
 
   }
