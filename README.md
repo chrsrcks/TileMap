@@ -22,4 +22,5 @@ TileMap(
 - mouse over tile (return x,y,value for change, highlighting or value conditions)
 
 <v 1.2>
+- sprite
 - draw objects (sprites or colored rectangles)

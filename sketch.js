@@ -1,10 +1,13 @@
 
-var tileArray, tileSheet, array2D, tileMap, tileMap_2;
+var tileArray, array2D, tileMap; // example 1
+var tileSheet, array2D_2, tileMap_2; // example 2
+var spriteSheet, array2D_3, tileMap_3; // example 3
 
 function preload() {
 
   tileArray = [ loadImage('img/gras.png'), loadImage('img/earth.png'), loadImage('img/sand.png') ];
   tileSheet = loadImage('img/tileSheet.png');
+  spriteSheet = loadImage('img/see.png');
   
 }
 
@@ -22,6 +25,12 @@ function setup() {
   //console.table(array2D_2);
   tileMap_2 = new TileMap(tileSheet, 64, array2D_2, {x:320,y:64});
 
+  // example 3
+  array2D_3 = new Array2D(3, 3, (x,y)=> 0);
+  //console.table(array2D_3);
+  let sprite = new Sprite(spriteSheet);
+  tileMap_3 = new TileMap([sprite], 64, array2D_3, {x:576,y:64});
+
 }
 
 function draw() {
@@ -31,6 +40,8 @@ function draw() {
   tileMap.draw();
   // example 2
   tileMap_2.draw();
+  // example 3
+  tileMap_3.draw();
 
 }
 

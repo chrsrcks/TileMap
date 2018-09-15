@@ -38,10 +38,10 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
         if (this.images[index].canvas) // image
 
-          image(this.images[index], x *tileSize, y *tileSize, tileSize, tileSize);
+          image(this.images[index], x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
  
         else // sprite
-          this.images[index].draw(x, y, tileSize);
+          this.images[index].draw(x, y, this.tileSize);
       }
     });
     pop();
