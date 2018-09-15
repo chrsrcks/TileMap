@@ -2,6 +2,7 @@
 var tileArray, array2D, tileMap; // example 1
 var tileSheet, array2D_2, tileMap_2; // example 2
 var spriteSheet, array2D_3, tileMap_3; // example 3
+var obj, array2D_4, tileMap_4; // example 4
 
 function preload() {
 
@@ -31,6 +32,20 @@ function setup() {
   let sprite = new Sprite(spriteSheet);
   tileMap_3 = new TileMap([sprite], 64, array2D_3, {x:576,y:64});
 
+    // example 4
+    array2D_4 = new Array2D(3, 3, (x,y)=> 0);
+    //console.table(array2D_4);
+    obj = { 
+      draw: function(x,y,s) {
+        push();
+        noStroke();
+        fill(x*100,100,y*100);
+        rect(x*s,y*s,s,s);
+        pop();
+      } 
+    };
+    tileMap_4 = new TileMap([obj], 64, array2D_4, {x:832,y:64});
+
 }
 
 function draw() {
@@ -42,6 +57,8 @@ function draw() {
   tileMap_2.draw();
   // example 3
   tileMap_3.draw();
+  // example 4
+  tileMap_4.draw();
 
 }
 
