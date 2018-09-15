@@ -40,7 +40,8 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
           image(this.images[index], x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
  
-        else // sprite
+        else if (this.images[index].draw) // object (sprite)
+
           this.images[index].draw(x, y, this.tileSize);
       }
     });

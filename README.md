@@ -1,10 +1,10 @@
 # TileMap
 
 TileMap(
-    images, // ( image array || tileSheet )
+    images, // ( image-array || obj-array || tileSheet )
     tileSize, // ( size in px )
     array2D, // ( [[index]] )
-    pos // ( position )
+    pos // ( position x, y )
 )
 
 .draw() // draw all tiles
