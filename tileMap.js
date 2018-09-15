@@ -68,7 +68,28 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
     else
 
-      this.array2D[x][y] = newIndex;
+      this.array2D[y][x] = newIndex;
+
+  };
+
+  /**
+  * Mouse over a tile.
+  * @method mouseOverTile
+  * @param {Number} x mouseX.
+  * @param {Number} y mouseY.
+  * @return {Boolean}
+  **/
+
+  this.mouseOverTile = function(mx, my, x, y) {
+
+    if ( mx > this.pos.x + (x * this.tileSize)
+      && mx < this.pos.x + (x * this.tileSize) + this.tileSize
+      && my > this.pos.y + (y * this.tileSize)
+      && my < this.pos.y + (y * this.tileSize) + this.tileSize )
+
+      return { index: this.array2D[x][y], x: x, y: y } ;
+    else
+      return false;
 
   };
 
