@@ -1,6 +1,7 @@
 /*******************************************************************************
 tileMap.js
 by Christopher Ruckes, 2018
+with p5.js https://p5js.org/
 *******************************************************************************/
 /**
 * Create a tile map from a matrix or random if no argument is past.
@@ -15,8 +16,9 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
   this.images = images || [];
   this.tileSize = tileSize || 32;
-  if (!Array.isArray(this.images) && this.images.canvas)
-    this.images = sheetToArray(this.images);
+  if (!Array.isArray(this.images) && this.images.canvas) // = !array & img
+    this.images = sheetToArray(this.images, tileSize); // img => array
+
   this.array2D = array2D || new Array2D(3,3,(x,y)=> -1);
   this.pos = pos || {x:0,y:0};
 
@@ -36,11 +38,11 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
       if (typeof index === 'number' && index >= 0 && index < this.images.length) {
 
-        if (this.images[index].canvas) // image
+        if (this.images[index].canvas) // = image
 
           image(this.images[index], x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
  
-        else if (this.images[index].draw) // object (sprite)
+        else if (this.images[index].draw) // = object with draw function (sprite)
 
           this.images[index].draw(x, y, this.tileSize);
       }
