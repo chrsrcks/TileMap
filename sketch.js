@@ -54,12 +54,17 @@ function draw() {
 
   // example 1
   tileMap.draw();
+  fill(255);
+  text('1)    images from array', 32, 32);
   // example 2
   tileMap_2.draw();
+  text('2)    images from tileSheet', 288, 32);
   // example 3
   tileMap_3.draw();
+  text('3)    sprites ', 544, 32);
   // example 4
   tileMap_4.draw();
+  text('3)    objects ', 808, 32);
 
 }
 
