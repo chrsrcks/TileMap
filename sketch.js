@@ -24,7 +24,8 @@ function setup() {
   // example 2
   array2D_2 = new Array2D(3, 3, (x,y)=> floor(random(1,9)));
   //console.table(array2D_2);
-  tileMap_2 = new TileMap(tileSheet, 64, array2D_2, {x:320,y:64});
+  tileMap_2 = new TileMap(tileSheet, 32, array2D_2, {x:320,y:64}); // 32 = original tilesize
+  tileMap_2.tileSize = 64; // scale map
 
   // example 3
   array2D_3 = new Array2D(3, 3, (x,y)=> 0);
