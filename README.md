@@ -26,3 +26,6 @@ TileMap(
 <v 1.2>
 - sprite
 - draw objects (sprites or colored rectangles)
+
+<v 1.3>
+- isometric

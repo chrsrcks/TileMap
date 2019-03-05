@@ -27,7 +27,7 @@ const TileMap = function(images, tileSize, array2D, pos) {
   * @method draw
   **/
 
-  this.draw = function() {
+  this.draw = function(iso) {
 
     push();
     translate(this.pos.x,this.pos.y);
@@ -40,8 +40,11 @@ const TileMap = function(images, tileSize, array2D, pos) {
 
         if (this.images[index].canvas) // = image
 
-          image(this.images[index], x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
- 
+          if (!iso)
+            image(this.images[index], x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
+          else
+            image(this.images[index], (x-y) * (this.tileSize/2), (x+y) * (this.tileSize*.25), this.tileSize, this.tileSize);
+
         else if (this.images[index].draw) // = object with draw function (sprite)
 
           this.images[index].draw(x, y, this.tileSize);
